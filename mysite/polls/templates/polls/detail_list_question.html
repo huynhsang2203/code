@@ -1,0 +1,15 @@
+{%extends "polls/base.html"%}
+{%block title%}Detail{%endblock%}
+{%block content%}
+{{qs.question_text}}
+    <form action="{%url 'polls:votes' qs.id %}" method="post">
+        {% csrf_token %}
+        <ul>
+            {%for item in qs.choice_set.all%}
+        <li><input type="radio" value="{{item.id}}" name="choice">{{item.choice_text}}</li>
+        {%endfor%}
+        <button type="submit" value="send">Gui</button>
+        </ul>
+    </form>
+
+{%endblock%}

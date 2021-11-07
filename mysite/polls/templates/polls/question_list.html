@@ -1,0 +1,14 @@
+{%extends "polls/base.html"%}
+
+{%block content%}
+<ol>
+    {%if list%}
+    {%for item in list%}
+    <a href="{%url 'polls:details' item.id %}"><p>{{item.question_text}}</p></a>
+    {%endfor%}
+    {%else%}
+    <h3 style="color: red;">Khong co cau hoi !</h3>
+    {%endif%}
+
+</ol>
+{%endblock%}
